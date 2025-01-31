@@ -1,11 +1,17 @@
 import React from "react";
 import "./ImageCard.module.css";
 
-const ImageCard = ({ image, onClick }) => {
+const ImageCard = ({ image }) => {
   return (
-    <div className="image-card" onClick={() => onClick(image)}>
-      <img src={image.urls.small} alt={image.alt_description} />
+    <div className={styles["image-card"]}>
+      <img
+        src={image.urls.small}
+        alt={image.alt_description || "Gallery Image"}
+        className={styles["gallery-image"]}
+        loading="lazy"
+      />
     </div>
   );
 };
+
 export default ImageCard;

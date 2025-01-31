@@ -1,12 +1,21 @@
-import React from "react";
-import ImageGallery from "/src/components/ImageGallery/ImageGalery";
-import "./App.css";
+import React, { useState } from "react";
+import ImageGallery from "../src/components/ImageGallery/ImageGalery";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchSubmit = (term) => {
+    setSearchTerm(term);
+  };
+
   return (
-    <div className="App">
-      <h1>Image Gallery</h1> <ImageGallery />
+    <div>
+      <Toaster position="top-right" />
+
+      <ImageGallery searchTerm={searchTerm} />
     </div>
   );
 };
+
 export default App;

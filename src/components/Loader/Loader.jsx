@@ -1,7 +1,10 @@
 import React from "react";
-import "./Loader.module.css";
+import { Oval } from "react-loader-spinner";
 
-const Loader = () => {
-  return <div className="loader">Loading...</div>;
-};
+const Loader = () => (
+  <div className={styles["loader-container"]}>
+    <Oval height={50} width={50} color="#007bff" />
+  </div>
+);
+
 export default Loader;
