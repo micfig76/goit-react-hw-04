@@ -4,7 +4,7 @@ import ImageCard from "../ImageCard/ImageCard";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import SearchBar from "../SearchBar/SearchBar";
-import "./ImageGallery.module.css";
+import styles from "./ImageGallery.module.css";
 
 const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 

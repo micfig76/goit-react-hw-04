@@ -1,5 +1,5 @@
 import React from "react";
-import "./ImageCard.module.css";
+import styles from "./ImageCard.module.css";
 
 const ImageCard = ({ image }) => {
   return (
