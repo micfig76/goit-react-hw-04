@@ -3,13 +3,11 @@ import axios from "axios";
 import ImageCard from "../ImageCard/ImageCard";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import SearchBar from "../SearchBar/SearchBar";
 import styles from "./ImageGallery.module.css";
 
 const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 
-const ImageGallery = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+const ImageGallery = ({ searchTerm, onImageClick }) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -47,24 +45,19 @@ const ImageGallery = () => {
     fetchImages();
   }, [searchTerm, page]);
 
-  const handleSearchSubmit = (term) => {
-    if (term !== searchTerm) {
-      setSearchTerm(term);
-      setPage(1);
-      setImages([]);
-    }
-  };
+  useEffect(() => {
+    setPage(1);
+    setImages([]);
+  }, [searchTerm]);
 
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <>
-      <SearchBar onSubmit={handleSearchSubmit} />
-
+    <div>
       {images.length > 0 && (
         <ul className={styles["image-grid"]}>
           {images.map((image) => (
-            <li key={image.id}>
+            <li key={image.id} onClick={() => onImageClick(image)}>
               <ImageCard image={image} />
             </li>
           ))}
@@ -81,7 +74,7 @@ const ImageGallery = () => {
           Load More
         </button>
       )}
-    </>
+    </div>
   );
 };
 
